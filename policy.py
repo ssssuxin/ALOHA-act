@@ -7,6 +7,7 @@ import IPython
 e = IPython.embed
 
 class ACTPolicy(nn.Module):
+    #网络②这里就是 本论文的重点 ACT 网络的具体架构 //EXPL
     def __init__(self, args_override):
         super().__init__()
         model, optimizer = build_ACT_model_and_optimizer(args_override)

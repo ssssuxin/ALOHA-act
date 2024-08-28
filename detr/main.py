@@ -69,11 +69,12 @@ def get_args_parser():
 
 def build_ACT_model_and_optimizer(args_override):
     parser = argparse.ArgumentParser('DETR training and evaluation script', parents=[get_args_parser()])
+    # 复制默认的这些参数
     args = parser.parse_args()
 
     for k, v in args_override.items():
         setattr(args, k, v)
-
+    # 用已经弄好的参数一一地对这些参数进行修改
     model = build_ACT_model(args)
     model.cuda()
 

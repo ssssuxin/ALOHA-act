@@ -82,7 +82,7 @@ def main(args):
         'onscreen_render': onscreen_render,
         'policy_config': policy_config,
         'task_name': task_name,
-        'seed': args['seed'],
+        'seed': args['seed'], #随机数种子  有点像随机数表  比如说np或者torch设置了种子的序号那么就从序号的那串随机数入手 （设置相当于重置，又从改序号的表的第一个开始看起） 假设序号“0”的随机数是 1 2 3，再次设置了相同的种子 会默认从1 开始看起 
         'temporal_agg': args['temporal_agg'],
         'camera_names': camera_names,
         'real_robot': not is_sim
@@ -327,7 +327,7 @@ def train_bc(train_dataloader, val_dataloader, config):
     policy_config = config['policy_config']
 
     set_seed(seed)
-
+    # 网络①网络生成集合  //EXPL
     policy = make_policy(policy_class, policy_config)
     policy.cuda()
     optimizer = make_optimizer(policy_class, policy)
